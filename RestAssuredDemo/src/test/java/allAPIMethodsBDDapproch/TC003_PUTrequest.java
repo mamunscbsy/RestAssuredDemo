@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.*;
 
 public class TC003_PUTrequest {
 	
-	@Test
+	//@Test
 	public void putRequest() {
 		
 		JSONObject requestBody = new JSONObject();
@@ -18,6 +18,7 @@ public class TC003_PUTrequest {
 		requestBody.put("job", "zion resident1");
 		
 		given()
+		.accept(ContentType.JSON)
 		.header("Content-Type","application/json")
 		.accept(ContentType.JSON)
 		.body(requestBody.toJSONString())
@@ -39,7 +40,8 @@ public class TC003_PUTrequest {
 		requestBody.put("salary", "12345");
 		requestBody.put("age", "50");
 		requestBody.put("id", "289970");
-		System.out.println(requestBody);
+		
+		//System.out.println(requestBody);
 		
 		given()
 		.header("Content-Type","application/json")
@@ -47,8 +49,9 @@ public class TC003_PUTrequest {
 		.body(requestBody.toJSONString())
 		.when()
 		.put("http://dummy.restapiexample.com/api/v1/update/21")
-		.then().statusCode(200)
-		.log().body();
+		.then()
+		.statusCode(200)
+		.log().all();
 			
 	}
 

@@ -81,17 +81,18 @@ public class TC002_POSTRequest{
 		requesyBody.put("age", "23");
 		requesyBody.put("id", "28997");
 		
-		System.out.println(requesyBody);
+		//System.out.println(requesyBody);
 		
 		given()
+		
 		.header("Content-Type","application/json")
-		.accept(ContentType.JSON)
+		//.accept(ContentType.JSON)
 		.body(requesyBody.toJSONString())
 		.when()
 		.post("http://dummy.restapiexample.com/api/v1/create")
 		.then()
 		.statusCode(200)
-		//.log().all()
+		//.log().all();
 		.log().body();
 		
 	}	
